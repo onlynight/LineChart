@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.onlynight.linechart.demo.XmlConfigActivity">
+
+    <com.github.onlynight.chart.LineChartView
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:axisXHasScaleText="true"
+        app:axisXHasVerticalLine="true"
+        app:axisXMaxScaleNum="7"
+        app:axisXScalePosition="center"
+        app:axisYHasScaleText="true"
+        app:axisYHasVerticalLine="true"
+        app:axisYScalePosition="center"
+        app:axisYScaleTextSize="10sp"
+        app:contentMargin="10dp"
+        app:hasAxisX="true"
+        app:hasAxisY="false"
+        app:lineContentMargin="10dp"/>
+
+</LinearLayout>

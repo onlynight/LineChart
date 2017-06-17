@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LineChartView">
+
+        <!-- axis line settings -->
+        <attr name="axisXLineColor" format="color"/>
+        <attr name="axisYLineColor" format="color"/>
+        <attr name="axisXLineWidth" format="dimension|reference"/>
+        <attr name="axisYLineWidth" format="dimension|reference"/>
+
+        <!-- axis title settings -->
+        <attr name="axisXTitle" format="string|reference"/>
+        <attr name="axisYTitle" format="string|reference"/>
+        <attr name="axisXHasTitle" format="boolean"/>
+        <attr name="axisYHasTitle" format="boolean"/>
+        <attr name="axisXTitleTextSize" format="dimension|reference"/>
+        <attr name="axisYTitleTextSize" format="dimension|reference"/>
+        <attr name="axisXTitleTextColor" format="color|reference"/>
+        <attr name="axisYTitleTextColor" format="color|reference"/>
+
+        <!-- axis scale text settings -->
+        <attr name="axisXHasScaleText" format="boolean"/>
+        <attr name="axisYHasScaleText" format="boolean"/>
+        <attr name="axisXScaleTextColor" format="color"/>
+        <attr name="axisYScaleTextColor" format="color"/>
+        <attr name="axisXScaleTextSize" format="dimension|reference"/>
+        <attr name="axisYScaleTextSize" format="dimension|reference"/>
+        <attr name="axisXMaxScaleNum" format="integer"/>
+        <attr name="axisYMaxScaleNum" format="integer"/>
+        <attr name="axisXScalePosition" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="axisYScalePosition" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="top" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
+
+        <!-- axis vertical line settings -->
+        <attr name="axisXHasVerticalLine" format="boolean"/>
+        <attr name="axisYHasVerticalLine" format="boolean"/>
+        <attr name="axisXVerticalLineColor" format="color|reference"/>
+        <attr name="axisYVerticalLineColor" format="color|reference"/>
+        <attr name="axisXVerticalLineWidth" format="dimension"/>
+        <attr name="axisYVerticalLineWidth" format="dimension"/>
+
+        <!-- axis line -->
+        <attr name="hasAxisX" format="boolean"/>
+        <attr name="hasAxisY" format="boolean"/>
+
+        <!-- content margin -->
+        <attr name="contentMargin" format="dimension|reference"/>
+
+        <!-- line content margin -->
+        <attr name="lineContentMargin" format="dimension|reference"/>
+    </declare-styleable>
+
+</resources>
