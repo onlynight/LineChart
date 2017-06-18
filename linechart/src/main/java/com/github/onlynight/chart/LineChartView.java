@@ -74,6 +74,12 @@ public class LineChartView extends View {
     private int mAxisYScaleTextPosition = Axis.AXIS_SCALE_TEXT_POSITION_CENTER;
 
     /**
+     * axis scale text format
+     */
+    private String mAxisXScaleTextFormat = DEFAULT_AXIS_X_FORMAT;
+    private String mAxisYScaleTextFormat = DEFAULT_AXIS_Y_FORMAT;
+
+    /**
      * axis title text
      */
     private String mAxisXTitle;
@@ -214,6 +220,8 @@ public class LineChartView extends View {
             mAxisXHasScaleText = array.getBoolean(
                     R.styleable.LineChartView_axisXHasScaleText,
                     false);
+            mAxisXScaleTextFormat = array.getString(
+                    R.styleable.LineChartView_axisXScaleTextFormat);
             mAxisXHasVerticalLine = array.getBoolean(
                     R.styleable.LineChartView_axisXHasVerticalLine,
                     false);
@@ -251,6 +259,8 @@ public class LineChartView extends View {
             mAxisYHasScaleText = array.getBoolean(
                     R.styleable.LineChartView_axisYHasScaleText,
                     false);
+            mAxisYScaleTextFormat = array.getString(
+                    R.styleable.LineChartView_axisYScaleTextFormat);
             mAxisYHasVerticalLine = array.getBoolean(
                     R.styleable.LineChartView_axisYHasVerticalLine,
                     false);
@@ -276,6 +286,7 @@ public class LineChartView extends View {
             mAxisXMaxScaleNum = 12;
             mAxisXScaleTextPosition = 0;
             mAxisXTitleTextSize = DisplayUtil.sp2px(getContext(), 10);
+            mAxisXScaleTextFormat = DEFAULT_AXIS_X_FORMAT;
             mAxisXHasTitle = false;
             mAxisXHasScaleText = false;
             mAxisXHasVerticalLine = false;
@@ -290,6 +301,7 @@ public class LineChartView extends View {
             mAxisYMaxScaleNum = -1;
             mAxisYScaleTextPosition = 0;
             mAxisYTitleTextSize = DisplayUtil.sp2px(getContext(), 10);
+            mAxisYScaleTextFormat = DEFAULT_AXIS_Y_FORMAT;
             mAxisYHasTitle = false;
             mAxisYHasScaleText = false;
             mAxisYHasVerticalLine = false;
@@ -440,7 +452,7 @@ public class LineChartView extends View {
             drawAxisY(canvas);
         }
 
-        if (mHasAxisY) {
+        if (mHasAxisX) {
             drawAxisX(canvas);
         }
     }
@@ -496,8 +508,7 @@ public class LineChartView extends View {
         mPaint.setStrokeWidth(width);
         mPaint.setColor(color);
         for (ChartPoint point : mAxisYPoints) {
-            canvas.drawLine(mAxisYScaleLeftMargin, point.getY(), getWidth() -
-                    mContentMargin, point.getY(), mPaint);
+            canvas.drawLine(mAxisYScaleLeftMargin, point.getY(), getWidth(), point.getY(), mPaint);
         }
     }
 
@@ -625,7 +636,7 @@ public class LineChartView extends View {
             }
         } else {
             float scaleMaxWidth = generateAxisYScale(
-                    mAxisYScaleTextSize, DEFAULT_AXIS_Y_FORMAT, mPaint);
+                    mAxisYScaleTextSize, mAxisYScaleTextFormat, mPaint);
             if (mAxisYHasScaleText) {
                 mAxisYScaleLeftMargin += scaleMaxWidth + DEFAULT_MARGIN;
             }
@@ -637,7 +648,7 @@ public class LineChartView extends View {
                     mAxisX.getScaleTextFormat(), mPaint);
         } else {
             generateAxisXScale(mAxisXScaleTextSize, mAxisXMaxScaleNum,
-                    DEFAULT_AXIS_X_FORMAT, mPaint);
+                    mAxisXScaleTextFormat, mPaint);
         }
     }
 
@@ -715,13 +726,12 @@ public class LineChartView extends View {
                     getHeight() - mAxisXScaleBottomMargin + fontHeight);
             if (blank != 0) {
                 if ((i - 1) * blank > 0) {
-                    point.setValue(mLine.getData().get((i - 1) * blank).getValue());
+                    point.setValue(formatValue(mLine.getData().get((i - 1) * blank).getValue(), format));
                 } else {
-                    point.setValue(mLine.getData().get(0).getValue());
+                    point.setValue(formatValue(mLine.getData().get(0).getValue(), format));
                 }
             } else {
-                point.setValue(getFormatString(DEFAULT_AXIS_X_FORMAT, (i + 1) * 2)
-                        + ":00");
+                point.setValue(formatValue(String.valueOf(i), format));
             }
             float width = mPaint.measureText(point.getValue());
             if (width > maxAxisYScaleWidth) {
@@ -756,6 +766,46 @@ public class LineChartView extends View {
 //            }
 //            mAxisXPoints.add(point);
 //        }
+    }
+
+    private String formatValue(int value, String formatStr) {
+        try {
+            DecimalFormat df = new DecimalFormat(formatStr);
+            return df.format(value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(value);
+    }
+
+    private String formatValue(double value, String formatStr) {
+        try {
+            DecimalFormat df = new DecimalFormat(formatStr);
+            return df.format(value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(value);
+    }
+
+    private String formatValue(String value, String formatStr) {
+        try {
+            DecimalFormat df = new DecimalFormat(formatStr);
+            return df.format(Integer.valueOf(value));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DecimalFormat df = new DecimalFormat(formatStr);
+            return df.format(Double.valueOf(value));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(value);
     }
 
     private ExtremeValue getExtremeYValue() {

@@ -30,8 +30,8 @@ public class XmlConfigActivity extends AppCompatActivity {
         Line line = new Line().setLineColor(Color.RED).setLineWidth(5).setCube(true);
         List<ChartPoint> chartPoints = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 80; i++) {
-            ChartPoint cp = new ChartPoint(i, random.nextFloat() * 100 % 10);
+        for (int i = 0; i < 15; i++) {
+            ChartPoint cp = new ChartPoint(i, random.nextInt() * 100 % 5);
             cp.setValue(String.valueOf(i));
             chartPoints.add(cp);
         }
