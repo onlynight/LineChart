@@ -1,4 +1,6 @@
 # LineChart
 android line chart
 
-the README doc will coming soon.
+follow www.chbtc.com android app line chart view.
+
+![demo_view](./images/line_chart_demo.png)

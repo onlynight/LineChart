@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.github.onlynight.linechart.demo.XmlConfigActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.github.onlynight.linechart.demo.XmlConfigActivity">
+
+    <!--<com.github.onlynight.chart.LineChartView-->
+    <!--android:id="@+id/chart"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_margin="10dp"-->
+    <!--app:axisXHasScaleText="true"-->
+    <!--app:axisXHasVerticalLine="true"-->
+    <!--app:axisXMaxScaleNum="14"-->
+    <!--app:axisXScalePosition="center"-->
+    <!--app:axisXScaleTextFormat="0"-->
+    <!--app:axisYHasScaleText="true"-->
+    <!--app:axisYHasVerticalLine="true"-->
+    <!--app:axisYScalePosition="center"-->
+    <!--app:axisYScaleTextFormat="0.00"-->
+    <!--app:axisYScaleTextSize="10sp"-->
+    <!--app:contentMargin="5dp"-->
+    <!--app:hasAxisX="true"-->
+    <!--app:hasAxisY="true"-->
+    <!--app:lineContentMargin="10dp"/>-->
 
     <com.github.onlynight.chart.LineChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_height="200dp"
         app:axisXHasScaleText="true"
         app:axisXHasVerticalLine="true"
-        app:axisXMaxScaleNum="7"
+        app:axisXMaxScaleNum="4"
         app:axisXScalePosition="center"
-        app:axisXScaleTextFormat="0.00"
         app:axisYHasScaleText="true"
         app:axisYHasVerticalLine="true"
+        app:axisYMaxScaleNum="4"
         app:axisYScalePosition="center"
-        app:axisYScaleTextFormat="0.00"
         app:axisYScaleTextSize="10sp"
-        app:contentMargin="5dp"
+        app:contentMargin="10dp"
         app:hasAxisX="true"
         app:hasAxisY="true"
-        app:lineContentMargin="10dp" />
+        app:lineContentMargin="10dp"/>
 
 </LinearLayout>
