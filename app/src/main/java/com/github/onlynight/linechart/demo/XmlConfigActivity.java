@@ -25,8 +25,6 @@ public class XmlConfigActivity extends AppCompatActivity {
     }
 
     private void initChartData() {
-//        Line line = new Line().setLineColor(
-//                getResources().getColor(R.color.colorPrimary)).setLineWidth(5);
         Line line = new Line().setLineColor(Color.RED).setLineWidth(5).setCube(true);
         List<ChartPoint> chartPoints = new ArrayList<>();
         Random random = new Random();
